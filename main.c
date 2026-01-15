@@ -16,23 +16,16 @@ void	choose_algorithm(t_stack *a, t_stack *b, t_flags *flags)
 {
 	if (is_sorted(a))
 		return ;
-	if (flags->simple)
+	else if (flags->complex)
+		complex_algorithm(a, b);
+	else if (flags->medium)
+		medium_algorithm(a, b);
+	else if (flags->simple)
 		simple_algorithm(a, b);
-	//else if (flags->medium)
-		//medium_algorithm(a, b);
-	//else if (flags->complex)
-		//complex_algorithm(a, b);
-	//else if (flags->adaptive)
-		//adaptive_algorithm(a, b);
+
 	else
-	{
-		if (a->size <= 3)
-			simple_algorithm(a, b);
-		//else if (a->size <= 100)
-			//medium_algorithm(a, b);
-		//else
-			//complex_algorithm(a, b);
-	}
+		adaptive_algorithm(a, b);
+
 }
 
 int	main(int ac, char **av)

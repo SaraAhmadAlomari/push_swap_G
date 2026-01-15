@@ -21,6 +21,10 @@ void	simple_algorithm(t_stack *a, t_stack *b)
 	}
 	else if (a->size == 3)
 		sort_three(a);
+	else if (a->size == 4)
+		sort_four(a, b);
+	else if (a->size == 5)
+		sort_five(a, b);
 }
 
 void	sort_three(t_stack *a)
@@ -50,16 +54,40 @@ void	sort_three(t_stack *a)
 		rra(a);
 }
 
-int	is_sorted(t_stack *stack)
+void	sort_four(t_stack *a, t_stack *b)
 {
-	t_node	*cur;
+	int	min;
 
-	cur = stack->top;
-	while (cur && cur->next)
+	min = find_min(a);
+	if (is_sorted(a))
+		return ;
+	while (a->top->value != min)
 	{
-		if (cur->value > cur->next->value)
-			return (0);
-		cur = cur->next;
+		if (get_index(a, min) <= a->size / 2)
+			ra(a);
+		else
+			rra(a);
 	}
-	return (1);
+	pb(a, b);
+	sort_three(a);
+	pa(a, b);
+}
+
+void	sort_five(t_stack *a, t_stack *b)
+{
+	int	min1;
+
+	if (is_sorted(a))
+		return ;
+	min1 = find_min(a);
+	while (a->top->value != min1)
+	{
+		if (get_index(a, min1) <= a->size / 2)
+			ra(a);
+		else
+			rra(a);
+	}
+	pb(a, b);
+	sort_four(a, b);
+	pa(a, b);
 }

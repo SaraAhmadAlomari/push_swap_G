@@ -35,4 +35,5 @@ void	pa(t_stack *a, t_stack *b)
 void	pb(t_stack *a, t_stack *b)
 {
 	push_stacks(a, b);
+	write(1, "pb\n", 3);
 }

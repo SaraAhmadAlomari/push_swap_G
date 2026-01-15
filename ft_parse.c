@@ -43,8 +43,6 @@ int	parse_input(int ac, char **av, t_flags *f, int *start)
 			error_exit();
 		i++;
 	}
-	if (!f->simple && !f->medium && !f->complex)
-		f->adaptive = 1;
 	*start = i;
 	if (i >= ac)
 		return (0);
