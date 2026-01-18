@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_adaptive_algorithm.c                            :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saalomar <saalomar@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/18 10:33:48 by saalomar          #+#    #+#             */
-/*   Updated: 2026/01/18 13:58:37 by saalomar         ###   ########.fr       */
+/*   Created: 2025/12/17 11:40:36 by saalomar          #+#    #+#             */
+/*   Updated: 2025/12/17 12:06:05 by saalomar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_push_swap.h"
 
-void	adaptive_algorithm(t_stack *a, t_stack *b, t_bench *bench)
+#include "ft_printf.h"
+
+int	ft_putnbr(int n)
 {
-	float	disorder;
+	long	nbr;
+	int		count;
 
-	disorder = compute_disorder(a);
-	if (disorder < 0.2)
+	count = 0;
+	nbr = n;
+	if (nbr < 0)
 	{
-		simple_algorithm(a, b, bench);
+		count += ft_putchar('-');
+		nbr = -nbr;
 	}
-	else if (disorder >= 0.2 && disorder < 0.5)
-	{
-		medium_algorithm(a, b, bench);
-	}
-	else
-	{
-		complex_algorithm(a, b, bench);
-	}
+	if (nbr >= 10)
+		count += ft_putnbr(nbr / 10);
+	count += ft_putchar((nbr % 10) + '0');
+	return (count);
 }

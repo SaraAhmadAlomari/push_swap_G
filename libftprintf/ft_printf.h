@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_adaptive_algorithm.c                            :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saalomar <saalomar@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/18 10:33:48 by saalomar          #+#    #+#             */
-/*   Updated: 2026/01/18 13:58:37 by saalomar         ###   ########.fr       */
+/*   Created: 2025/12/11 14:28:40 by saalomar          #+#    #+#             */
+/*   Updated: 2025/12/17 12:37:21 by saalomar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_push_swap.h"
 
-void	adaptive_algorithm(t_stack *a, t_stack *b, t_bench *bench)
-{
-	float	disorder;
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdarg.h>
+# include <stdint.h>
 
-	disorder = compute_disorder(a);
-	if (disorder < 0.2)
-	{
-		simple_algorithm(a, b, bench);
-	}
-	else if (disorder >= 0.2 && disorder < 0.5)
-	{
-		medium_algorithm(a, b, bench);
-	}
-	else
-	{
-		complex_algorithm(a, b, bench);
-	}
-}
+int	ft_printf(const char *format, ...);
+int	ft_putchar(char c);
+int	ft_putstr(char *s);
+int	ft_putnbr(int n);
+int	ft_putunsigned(unsigned int n);
+int	ft_puthex(unsigned int n, char type);
+int	ft_putpointer(void *ptr);
+#endif

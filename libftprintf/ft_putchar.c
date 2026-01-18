@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_adaptive_algorithm.c                            :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saalomar <saalomar@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/18 10:33:48 by saalomar          #+#    #+#             */
-/*   Updated: 2026/01/18 13:58:37 by saalomar         ###   ########.fr       */
+/*   Created: 2025/12/17 11:23:33 by saalomar          #+#    #+#             */
+/*   Updated: 2025/12/17 11:31:48 by saalomar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_push_swap.h"
+#include "ft_printf.h"
 
-void	adaptive_algorithm(t_stack *a, t_stack *b, t_bench *bench)
+int	ft_putchar(char c)
 {
-	float	disorder;
+	int	count;
 
-	disorder = compute_disorder(a);
-	if (disorder < 0.2)
-	{
-		simple_algorithm(a, b, bench);
-	}
-	else if (disorder >= 0.2 && disorder < 0.5)
-	{
-		medium_algorithm(a, b, bench);
-	}
-	else
-	{
-		complex_algorithm(a, b, bench);
-	}
+	count = 0;
+	count += write(1, &c, 1);
+	return (count);
 }

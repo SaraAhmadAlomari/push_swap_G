@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sort_utils_2.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: saalomar <saalomar@learner.42.tech>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/18 10:34:56 by saalomar          #+#    #+#             */
+/*   Updated: 2026/01/18 13:59:40 by saalomar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "ft_push_swap.h"
 
 int	exists_in_range(t_stack *a, int min, int max)
@@ -47,22 +58,22 @@ int	get_index_position(t_stack *s, int index)
 	return (-1);
 }
 
-void	push_chunk(t_stack *a, t_stack *b, int min, int max)
+void	push_chunk(t_stack *a, t_stack *b, t_bench *bench, int min, int max)
 {
 	while (exists_in_range(a, min, max))
 	{
 		if (a->top->index >= min && a->top->index <= max)
 		{
-			pb(a, b);
+			pb(a, b, bench);
 			if (b->top->index < (min + max) / 2)
-				rb(b);
+				rb(b, bench);
 		}
 		else
-			ra(a);
+			ra(a, bench);
 	}
 }
 
-void	push_back_to_a(t_stack *a, t_stack *b)
+void	push_back_to_a(t_stack *a, t_stack *b, t_bench *bench)
 {
 	int	max;
 	int	pos;
@@ -74,13 +85,13 @@ void	push_back_to_a(t_stack *a, t_stack *b)
 		if (pos <= b->size / 2)
 		{
 			while (b->top->index != max)
-				rb(b);
+				rb(b, bench);
 		}
 		else
 		{
 			while (b->top->index != max)
-				rrb(b);
+				rrb(b, bench);
 		}
-		pa(a, b);
+		pa(a, b, bench);
 	}
 }

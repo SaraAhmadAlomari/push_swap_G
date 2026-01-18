@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_adaptive_algorithm.c                            :+:      :+:    :+:   */
+/*   ft_putunsigned.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saalomar <saalomar@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/18 10:33:48 by saalomar          #+#    #+#             */
-/*   Updated: 2026/01/18 13:58:37 by saalomar         ###   ########.fr       */
+/*   Created: 2025/12/17 12:06:23 by saalomar          #+#    #+#             */
+/*   Updated: 2025/12/17 12:34:10 by saalomar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_push_swap.h"
 
-void	adaptive_algorithm(t_stack *a, t_stack *b, t_bench *bench)
+#include "ft_printf.h"
+
+int	ft_putunsigned(unsigned int n)
 {
-	float	disorder;
+	int	count;
 
-	disorder = compute_disorder(a);
-	if (disorder < 0.2)
-	{
-		simple_algorithm(a, b, bench);
-	}
-	else if (disorder >= 0.2 && disorder < 0.5)
-	{
-		medium_algorithm(a, b, bench);
-	}
-	else
-	{
-		complex_algorithm(a, b, bench);
-	}
+	count = 0;
+	if (n >= 10)
+		count += ft_putunsigned(n / 10);
+	count += ft_putchar((n % 10) + '0');
+	return (count);
 }

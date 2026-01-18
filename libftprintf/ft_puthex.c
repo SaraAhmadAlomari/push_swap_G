@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_adaptive_algorithm.c                            :+:      :+:    :+:   */
+/*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saalomar <saalomar@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/18 10:33:48 by saalomar          #+#    #+#             */
-/*   Updated: 2026/01/18 13:58:37 by saalomar         ###   ########.fr       */
+/*   Created: 2025/12/17 12:10:50 by saalomar          #+#    #+#             */
+/*   Updated: 2025/12/17 12:35:35 by saalomar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_push_swap.h"
 
-void	adaptive_algorithm(t_stack *a, t_stack *b, t_bench *bench)
+#include "ft_printf.h"
+
+int	ft_puthex(unsigned int n, char type)
 {
-	float	disorder;
+	char	*hexa;
+	int		count;
 
-	disorder = compute_disorder(a);
-	if (disorder < 0.2)
-	{
-		simple_algorithm(a, b, bench);
-	}
-	else if (disorder >= 0.2 && disorder < 0.5)
-	{
-		medium_algorithm(a, b, bench);
-	}
-	else
-	{
-		complex_algorithm(a, b, bench);
-	}
+	count = 0;
+	if (type == 'X')
+		hexa = "0123456789ABCDEF";
+	else if (type == 'x')
+		hexa = "0123456789abcdef";
+	if (n >= 16)
+		count += ft_puthex((n / 16), type);
+	count += ft_putchar(hexa[n % 16]);
+	return (count);
 }

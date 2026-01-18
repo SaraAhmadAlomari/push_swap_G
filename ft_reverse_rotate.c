@@ -6,7 +6,7 @@
 /*   By: saalomar <saalomar@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:10:21 by saalomar          #+#    #+#             */
-/*   Updated: 2026/01/08 13:10:44 by saalomar         ###   ########.fr       */
+/*   Updated: 2026/01/18 13:35:14 by saalomar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,27 @@ static void	reverse_rotate_stack(t_stack *s)
 	s->top = last;
 }
 
-void	rra(t_stack *a)
+void	rra(t_stack *a , t_bench *bench)
 {
 	reverse_rotate_stack(a);
 	write(1, "rra\n", 4);
+	if (bench)
+	bench->rra++;
 }
 
-void	rrb(t_stack *b)
+void	rrb(t_stack *b, t_bench *bench)
 {
 	reverse_rotate_stack(b);
 	write(1, "rrb\n", 4);
+	if (bench)
+	bench->rrb++;
 }
 
-void	rrr(t_stack *a, t_stack *b)
+void	rrr(t_stack *a, t_stack *b, t_bench *bench)
 {
 	reverse_rotate_stack(a);
 	reverse_rotate_stack(b);
 	write(1, "rrr\n", 4);
+	if (bench)
+	bench->rrr++;
 }

@@ -1,41 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_complex_algorithm.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: saalomar <saalomar@learner.42.tech>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/18 11:19:48 by saalomar          #+#    #+#             */
+/*   Updated: 2026/01/18 14:02:29 by saalomar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "ft_push_swap.h"
 
-void	complex_algorithm(t_stack *a, t_stack *b)
+void	complex_algorithm(t_stack *a, t_stack *b, t_bench *bench)
 {
-    int total_size;
-    int num_chunks;
-    int chunk_size;
-    int min;
-    int max;
-    int i;
+	int	i;
+	int	j;
+	int	max_bits;
+	int	max_num;
 
-    total_size = a->size;
-    num_chunks = 5;
-    chunk_size = total_size / num_chunks;
-    min = 0;
-    max = chunk_size - 1;
-    i = 0;
-    while (i < num_chunks)
-    {
-        push_chunk_to_b(a, b, min, max);
-        while (b->size > 0)
-        {
-            int max_pos;
-
-            max_pos = find_max_position(b);
-            if (max_pos <= b->size / 2)
-                while (max_pos--)
-                    rb(b);
-            else
-                while (max_pos++ < b->size)
-                    rrb(b);
-            pa(a, b);
-        }
-        min += chunk_size;
-        max += chunk_size;
-        if (i == num_chunks - 2)
-            max = total_size - 1;
-        i++;
-    }
+	max_num = a->size - 1;
+	max_bits = 0;
+	while ((max_num >> max_bits) != 0)
+		max_bits++;
+	i = 0;
+	while (i < max_bits)
+	{
+		j = 0;
+		while (j < a->size)
+		{
+			if (((a->top->index >> i) & 1) == 1)
+				ra(a, bench);
+			else
+				pb(a, b, bench);
+			j++;
+		}
+		while (b->size > 0)
+			pa(a, b, bench);
+		i++;
+	}
 }
-

@@ -6,7 +6,7 @@
 /*   By: saalomar <saalomar@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 11:41:42 by saalomar          #+#    #+#             */
-/*   Updated: 2026/01/08 13:13:00 by saalomar         ###   ########.fr       */
+/*   Updated: 2026/01/18 13:34:14 by saalomar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,27 @@ static void	swap_stack(t_stack *s)
 	s->top = second;
 }
 
-void	sa(t_stack *a)
+void	sa(t_stack *a, t_bench *bench)
 {
 	swap_stack(a);
 	write(1, "sa\n", 3);
+	if (bench)
+	bench->sa++;
 }
 
-void	sb(t_stack *b)
+void	sb(t_stack *b, t_bench *bench)
 {
 	swap_stack(b);
 	write(1, "sb\n", 3);
+	if (bench)
+	bench->sb++;
 }
 
-void	ss(t_stack *a, t_stack *b)
+void	ss(t_stack *a, t_stack *b, t_bench *bench)
 {
 	swap_stack(a);
 	swap_stack(b);
 	write(1, "ss\n", 3);
+	if (bench)
+	bench->ss++;
 }
