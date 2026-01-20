@@ -45,8 +45,7 @@ wc -l
 ## Run with arguments
 ```bash
 shuf -i 0-9999 -n 500 > args.txt
-```
-```bash
+
 ./push_swap --bench $(cat args.txt) 2> bench.txt | ./checker_os $(cat args.txt)
 ```
 ## Run with bench output
