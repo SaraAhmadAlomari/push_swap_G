@@ -16,17 +16,18 @@ void	complex_algorithm(t_stack *a, t_stack *b, t_bench *bench)
 	int	i;
 	int	j;
 	int	max_bits;
-	int	max_num;
+	int	size;
 
-	max_num = a->size - 1;
+	size = a->size;
 	max_bits = 0;
-	while ((max_num >> max_bits) != 0)
+	while (((size - 1) >> max_bits) != 0)
 		max_bits++;
 	i = 0;
 	while (i < max_bits)
 	{
 		j = 0;
-		while (j < a->size)
+		size = a->size;
+		while (j < size)
 		{
 			if (((a->top->index >> i) & 1) == 1)
 				ra(a, bench);

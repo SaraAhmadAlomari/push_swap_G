@@ -30,6 +30,7 @@ void	choose_algorithm(t_stack *a, t_stack *b, t_flags *flags, t_bench *bench)
 		adaptive_algorithm(a, b, bench);
 	if (flags->bench)
 		print_bench(&a_original, bench, flags);
+	free_stack(&a_original);
 }
 
 int	main(int ac, char **av)
