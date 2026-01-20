@@ -11,29 +11,37 @@
 /* ************************************************************************** */
 #include "ft_push_swap.h"
 
+static int	get_max_bits(int size)
+{
+	int	max_bits;
+	int	max_num;
+
+	max_num = size - 1;
+	max_bits = 0;
+	while ((max_num >> max_bits) != 0)
+		max_bits++;
+	return (max_bits);
+}
+
 void	complex_algorithm(t_stack *a, t_stack *b, t_bench *bench)
 {
 	int	i;
 	int	j;
-	int	max_bits;
 	int	size;
+	int	max_bits;
 
-	size = a->size;
-	max_bits = 0;
-	while (((size - 1) >> max_bits) != 0)
-		max_bits++;
+	max_bits = get_max_bits(a->size);
 	i = 0;
 	while (i < max_bits)
 	{
 		j = 0;
 		size = a->size;
-		while (j < size)
+		while (j++ < size)
 		{
 			if (((a->top->index >> i) & 1) == 1)
 				ra(a, bench);
 			else
 				pb(a, b, bench);
-			j++;
 		}
 		while (b->size > 0)
 			pa(a, b, bench);
