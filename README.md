@@ -27,6 +27,7 @@ make
 
 ## Check if the operations correctly sort the stack
 ./push_swap 3 2 1 | ./checker_os 3 2 1
+
 ARG="4 67 3 87 23"; ./push_swap --complex $ARG | ./checker_os
 
 ## Run with a large inputs
@@ -35,10 +36,12 @@ wc -l
 
 ## Run with arguments 
 shuf -i 0-9999 -n 500 > args.txt
+
 ./push_swap --bench $(cat args.txt) 2> bench.txt | ./checker_os $(cat args.txt)
 
 ## Run with bench output
 ARG="4 67 3 87 23"
+
 ./push_swap --bench --adaptive $ARG 2> bench.txt | ./checker_os $ARG
 
 ## Algorithm Choice
