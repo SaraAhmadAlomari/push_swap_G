@@ -31,7 +31,7 @@ void	pa(t_stack *a, t_stack *b, t_bench *bench)
 	push_stacks(b, a);
 	write(1, "pa\n", 3);
 	if (bench)
-	bench->pa++;
+		bench->pa++;
 }
 
 void	pb(t_stack *a, t_stack *b, t_bench *bench)
@@ -39,5 +39,5 @@ void	pb(t_stack *a, t_stack *b, t_bench *bench)
 	push_stacks(a, b);
 	write(1, "pb\n", 3);
 	if (bench)
-	bench->pb++;
+		bench->pb++;
 }

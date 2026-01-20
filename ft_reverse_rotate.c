@@ -31,12 +31,12 @@ static void	reverse_rotate_stack(t_stack *s)
 	s->top = last;
 }
 
-void	rra(t_stack *a , t_bench *bench)
+void	rra(t_stack *a, t_bench *bench)
 {
 	reverse_rotate_stack(a);
 	write(1, "rra\n", 4);
 	if (bench)
-	bench->rra++;
+		bench->rra++;
 }
 
 void	rrb(t_stack *b, t_bench *bench)
@@ -44,7 +44,7 @@ void	rrb(t_stack *b, t_bench *bench)
 	reverse_rotate_stack(b);
 	write(1, "rrb\n", 4);
 	if (bench)
-	bench->rrb++;
+		bench->rrb++;
 }
 
 void	rrr(t_stack *a, t_stack *b, t_bench *bench)
@@ -53,5 +53,5 @@ void	rrr(t_stack *a, t_stack *b, t_bench *bench)
 	reverse_rotate_stack(b);
 	write(1, "rrr\n", 4);
 	if (bench)
-	bench->rrr++;
+		bench->rrr++;
 }

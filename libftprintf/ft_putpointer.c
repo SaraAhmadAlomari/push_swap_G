@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static int	ft_puthex_ptr(uintptr_t n)
+static int	ft_puthex_ptr(uintptr_t n, int fd)
 {
 	char	*hexa;
 	int		count;
@@ -20,21 +20,21 @@ static int	ft_puthex_ptr(uintptr_t n)
 	hexa = "0123456789abcdef";
 	count = 0;
 	if (n >= 16)
-		count += ft_puthex_ptr(n / 16);
-	count += ft_putchar(hexa[n % 16]);
+		count += ft_puthex_ptr(n / 16, fd);
+	count += ft_putchar(hexa[n % 16], fd);
 	return (count);
 }
 
-int	ft_putpointer(void *ptr)
+int	ft_putpointer(void *ptr, int fd)
 {
 	uintptr_t	address;
 	int			count;
 
 	if (!ptr)
-		return (write(1, "(nil)", 5));
+		return (write(fd, "(nil)", 5));
 	count = 2;
-	write(1, "0x", 2);
+	write(fd, "0x", 2);
 	address = (uintptr_t)ptr;
-	count += ft_puthex_ptr(address);
+	count += ft_puthex_ptr(address, fd);
 	return (count);
 }

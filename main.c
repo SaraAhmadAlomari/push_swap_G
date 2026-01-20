@@ -14,7 +14,8 @@
 
 void	choose_algorithm(t_stack *a, t_stack *b, t_flags *flags, t_bench *bench)
 {
-	t_stack a_original;
+	t_stack	a_original;
+
 	init_stack(&a_original);
 	copy_stack(&a_original, a);
 	if (is_sorted(a))

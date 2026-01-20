@@ -58,14 +58,14 @@ int	get_index_position(t_stack *s, int index)
 	return (-1);
 }
 
-void	push_chunk(t_stack *a, t_stack *b, t_bench *bench, int min, int max)
+void	push_chunk(t_stack *a, t_stack *b, t_bench *bench, t_range r)
 {
-	while (exists_in_range(a, min, max))
+	while (exists_in_range(a, r.min, r.max))
 	{
-		if (a->top->index >= min && a->top->index <= max)
+		if (a->top->index >= r.min && a->top->index <= r.max)
 		{
 			pb(a, b, bench);
-			if (b->top->index < (min + max) / 2)
+			if (b->top->index < (r.min + r.max) / 2)
 				rb(b, bench);
 		}
 		else

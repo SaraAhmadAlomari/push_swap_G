@@ -31,7 +31,7 @@ void	sa(t_stack *a, t_bench *bench)
 	swap_stack(a);
 	write(1, "sa\n", 3);
 	if (bench)
-	bench->sa++;
+		bench->sa++;
 }
 
 void	sb(t_stack *b, t_bench *bench)
@@ -39,7 +39,7 @@ void	sb(t_stack *b, t_bench *bench)
 	swap_stack(b);
 	write(1, "sb\n", 3);
 	if (bench)
-	bench->sb++;
+		bench->sb++;
 }
 
 void	ss(t_stack *a, t_stack *b, t_bench *bench)
@@ -48,5 +48,5 @@ void	ss(t_stack *a, t_stack *b, t_bench *bench)
 	swap_stack(b);
 	write(1, "ss\n", 3);
 	if (bench)
-	bench->ss++;
+		bench->ss++;
 }

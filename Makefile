@@ -6,7 +6,7 @@ CFLAGS = -Wall -Wextra -Werror
 SRCS = main.c ft_flags.c ft_parse.c ft_stack.c ft_simple_algorithm.c \
        ft_swap.c ft_push.c ft_rotate.c ft_reverse_rotate.c ft_sort_utils.c \
        ft_adaptive_algorithm.c ft_sort_utils_2.c ft_medium_algorithm.c \
-       ft_bench.c ft_complex_algorithm.c copy.c
+       ft_bench.c ft_complex_algorithm.c ft_copy.c
 OBJS = $(SRCS:.c=.o)
 
 LIBFT = libft/libft.a

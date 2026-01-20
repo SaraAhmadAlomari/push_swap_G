@@ -56,6 +56,12 @@ typedef struct s_bench
 	int	rrr;
 }	t_bench;
 
+typedef struct s_range
+{
+	int	min;
+	int	max;
+}	t_range;
+
 void	init_flags(t_flags *f);
 int		is_flag(char *s);
 int		handle_flag(char *s, t_flags *f);
@@ -69,7 +75,8 @@ void	push_stack_end(t_stack *stack, t_node *node);
 void	build_stack(t_stack *stack, int ac, char **av, int start);
 void	assign_index(t_stack *stack);
 void	free_stack(t_stack *stack);
-void	choose_algorithm(t_stack *a, t_stack *b, t_flags *flags, t_bench *bench);
+void	choose_algorithm(t_stack *a, t_stack *b, t_flags *flags,
+			t_bench *bench);
 void	simple_algorithm(t_stack *a, t_stack *b, t_bench *bench);
 void	sort_three(t_stack *a, t_bench *bench);
 int		is_sorted(t_stack *stack);
@@ -85,7 +92,7 @@ void	print_bench(t_stack *a_original, t_bench *bench, t_flags *flags);
 int		exists_in_range(t_stack *a, int min, int max);
 int		find_max_index(t_stack *s);
 int		get_index_position(t_stack *s, int index);
-void	push_chunk(t_stack *a, t_stack *b, t_bench *bench, int min, int max);
+void	push_chunk(t_stack *a, t_stack *b, t_bench *bench, t_range r);
 void	push_back_to_a(t_stack *a, t_stack *b, t_bench *bench);
 void	sa(t_stack *a, t_bench *bench);
 void	sb(t_stack *b, t_bench *bench);

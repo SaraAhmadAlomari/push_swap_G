@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	ft_puthex(unsigned int n, char type)
+int	ft_puthex(unsigned int n, char type, int fd)
 {
 	char	*hexa;
 	int		count;
@@ -23,7 +23,7 @@ int	ft_puthex(unsigned int n, char type)
 	else if (type == 'x')
 		hexa = "0123456789abcdef";
 	if (n >= 16)
-		count += ft_puthex((n / 16), type);
-	count += ft_putchar(hexa[n % 16]);
+		count += ft_puthex((n / 16), type, fd);
+	count += ft_putchar(hexa[n % 16], fd);
 	return (count);
 }

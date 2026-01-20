@@ -17,11 +17,12 @@
 # include <stdarg.h>
 # include <stdint.h>
 
-int	ft_printf(const char *format, ...);
-int	ft_putchar(char c);
-int	ft_putstr(char *s);
-int	ft_putnbr(int n);
-int	ft_putunsigned(unsigned int n);
-int	ft_puthex(unsigned int n, char type);
-int	ft_putpointer(void *ptr);
+int	ft_printf(int fd, const char *format, ...);
+int	ft_putchar(char c, int fd);
+int	ft_putstr(char *s, int fd);
+int	ft_putnbr(int n, int fd);
+int	ft_putunsigned(unsigned int n, int fd);
+int	ft_puthex(unsigned int n, char type, int fd);
+int	ft_putpointer(void *ptr, int fd);
+int	ft_printfloat(double n, int fd);
 #endif
