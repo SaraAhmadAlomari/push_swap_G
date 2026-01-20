@@ -33,26 +33,21 @@ make
 ```
 
 ```bash
-ARG="4 67 3 87 23"; ./push_swap --complex $ARG | ./checker_os
+ARG="4 67 3 87 23"; ./push_swap --complex $ARG | ./checker_os $ARG
 ```
 
 ## Run with a large inputs
 ```bash
-shuf -i 0-9999 -n 500 > args.txt ; ./push_swap $(cat args.txt) |
-wc -l
+shuf -i 0-9999 -n 500 > args.txt ; ./push_swap $(cat args.txt) | wc -l
 ```
 
 ## Run with arguments
 ```bash
-shuf -i 0-9999 -n 500 > args.txt
-
-./push_swap --bench $(cat args.txt) 2> bench.txt | ./checker_os $(cat args.txt)
+shuf -i 0-9999 -n 500 > args.txt ; ./push_swap --bench $(cat args.txt) 2> bench.txt | ./checker_os $(cat args.txt)
 ```
 ## Run with bench output
 ```bash
-ARG="4 67 3 87 23"
-
-./push_swap --bench --adaptive $ARG 2> bench.txt | ./checker_os $ARG
+ARG="4 67 3 87 23"; ./push_swap --bench --adaptive $ARG 2> bench.txt | ./checker_os $ARG
 ```
 ## Algorithm Choice
 For this project, several sorting strategies were considered to optimize the number of operations required by the push_swap program. The chosen algorithms and justifications are as follows:
